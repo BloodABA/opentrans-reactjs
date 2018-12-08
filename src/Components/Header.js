@@ -31,9 +31,9 @@ class Header extends Component {
     }; 
 
     render() {
-        let menuItems = this.props.menuItems.map(item => (
-            <li className={`nav-item Item ${item.id === this.props.currentPage ? 'active' : ''}`}>
-                <Link to={'/'+item.id} class="nav-link">{item.title}</Link>
+        let menuItems = this.props.menuItems.map((item, idx) => (
+            <li className={`nav-item Item ${item.id === this.props.currentPage ? 'active' : ''}`} key={`menuItem-${idx}`}>
+                <Link to={'/'+item.id} className="nav-link">{item.title}</Link>
             </li>
         ));
 
@@ -53,19 +53,23 @@ class Header extends Component {
 
         let topHeader = (
             <nav className="navbar navbar-expand-lg navbar-light Header Header-Top">
-                <Link to="/" className="navbar-brand">
-                    <img src={logoImg} style={{width:'150px'}}></img>
-                </Link>
-                {headerMenu}
+                <div className="container">
+                    <Link to="/" className="navbar-brand">
+                        <img src={logoImg} style={{width:'150px'}}></img>
+                    </Link>
+                    {headerMenu}
+                </div>
             </nav>
         );
 
         let fixedHeader = (
             <nav id="fixedHeader" className="navbar navbar-expand-lg navbar-light Header Header-Fixed">
-                <Link to="/" className="navbar-brand">
-                    <img src={logoImgWhite} style={{width:'150px'}}></img>
-                </Link>
-                {headerMenu}
+                <div className="container">
+                    <Link to="/" className="navbar-brand">
+                        <img src={logoImgWhite} style={{width:'150px'}}></img>
+                    </Link>
+                    {headerMenu}
+                </div>
             </nav>
         );
 

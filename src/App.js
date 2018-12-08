@@ -17,12 +17,14 @@ class App extends Component {
       <React.Fragment>
         <Header menuItems={menuItems} currentPage=''>
         </Header>
-        <Route exact path="/" render={() =>
-          <Home />
-        } />
-        <Route exact path="/project/:query" render={({match}) => (
-          <Project query={match.params.query} />
-        )} />
+        <div className="container mt-3">
+          <Route exact path="/" render={() =>
+            <Home />
+          } />
+          <Route exact path="/project/:query" render={({match}) => (
+            <Project query={match.params.query} />
+          )} />
+        </div>
       </React.Fragment>
     );
 
