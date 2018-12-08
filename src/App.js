@@ -8,7 +8,6 @@ import Project from './Components/Project';
 class App extends Component {
   render() {
     const menuItems = [
-      {id: 'home', title : '홈'},
       {id: 'project', title : '프로젝트'},
       {id: 'voting', title : '보팅'},
       {id: 'mypage', title : '마이페이지'}

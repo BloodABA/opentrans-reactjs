@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Header.scss';
 import logoImg from '../img/opentrans_logo.svg';
+import { Link } from 'react-router-dom';
 import logoImgWhite from '../img/opentrans_logo_white.svg';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,7 +32,9 @@ class Header extends Component {
 
     render() {
         let menuItems = this.props.menuItems.map(item => (
-            <li className={`nav-item Item ${item.id === this.props.currentPage ? 'active' : ''}`}><a class="nav-link">{item.title}</a></li>
+            <li className={`nav-item Item ${item.id === this.props.currentPage ? 'active' : ''}`}>
+                <Link to={'/'+item.id} class="nav-link">{item.title}</Link>
+            </li>
         ));
 
         let headerMenu = (
@@ -50,18 +53,18 @@ class Header extends Component {
 
         let topHeader = (
             <nav className="navbar navbar-expand-lg navbar-light Header Header-Top">
-                <a className="navbar-brand" href="#">
+                <Link to="/" className="navbar-brand">
                     <img src={logoImg} style={{width:'150px'}}></img>
-                </a>
+                </Link>
                 {headerMenu}
             </nav>
         );
 
         let fixedHeader = (
             <nav id="fixedHeader" className="navbar navbar-expand-lg navbar-light Header Header-Fixed">
-                <a className="navbar-brand" href="#">
+                <Link to="/" className="navbar-brand">
                     <img src={logoImgWhite} style={{width:'150px'}}></img>
-                </a>
+                </Link>
                 {headerMenu}
             </nav>
         );
