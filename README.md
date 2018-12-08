@@ -1,3 +1,8 @@
+# OpenTrans
+
+![](https://raw.githubusercontent.com/BloodABA/opentrans-reactjs/master/opentrans_logo.png)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
