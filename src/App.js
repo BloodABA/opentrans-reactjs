@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import Header from './Components/Header';
-import './App.scss';
+import Home from './Components/Home';
+import Project from './Components/Project';
 
 class App extends Component {
   render() {
-    let menuItems = [
-      {title : 'Home', isActive : true},
-      {title : 'Project', isActive : false},
-      {title : 'Vote', isActive : false},
-      {title : 'MyPage', isActive : false}
+    const menuItems = [
+      {id: 'home', title : '홈'},
+      {id: 'project', title : '프로젝트'},
+      {id: 'voting', title : '보팅'},
+      {id: 'mypage', title : '마이페이지'}
     ];
-    return (
-      <div className="App">
-        <Header menuItems={menuItems}>
+
+    let body = (
+      <React.Fragment>
+        <Header menuItems={menuItems} currentPage=''>
         </Header>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p className="title">
-            Hello World! 
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <Route exact path="/" render={() =>
+          <Home />
+        } />
+        <Route exact path="/project/:query" render={({match}) => (
+          <Project query={match.params.query} />
+        )} />
+      </React.Fragment>
+    );
+
+    return (
+      <BrowserRouter>
+        { body }
+      </BrowserRouter>
     );
   }
 }
