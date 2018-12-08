@@ -20,6 +20,11 @@
     }
     .itemTitle {
       width: 100%;
+      .text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 33px;
+      }
     }
   }
 }
@@ -30,7 +35,9 @@
 }
 
 .head {
-  background-color: rgb(249, 249, 249);;
+  background-color: rgb(249, 249, 249);
+  font-size: 16px;
+  font-weight: 500;
 }
 .item {
   background-color: #fff;

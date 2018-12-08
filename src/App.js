@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 import Home from './Components/Home';
 import Project from './Components/Project';
 
@@ -17,14 +18,15 @@ class App extends Component {
       <React.Fragment>
         <Header menuItems={menuItems} currentPage=''>
         </Header>
-        <div className="container mt-3">
+        <div className="container mt-5 mb-5">
           <Route exact path="/" render={() =>
             <Home />
           } />
-          <Route exact path="/project/:query" render={({match}) => (
+          <Route exact path="/project" render={({match}) => (
             <Project query={match.params.query} />
           )} />
         </div>
+        <Footer />
       </React.Fragment>
     );
 

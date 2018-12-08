@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './Header.scss';
-import logoImg from '../img/opentrans_logo.svg';
 import { Link } from 'react-router-dom';
-import logoImgWhite from '../img/opentrans_logo_white.svg';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './Header.scss';
+
+import logoImg from '../img/opentrans_logo.svg';
+import logoImgWhite from '../img/opentrans_logo_white.svg';
+
 
 class Header extends Component {
     constructor(props) {
