@@ -12,22 +12,24 @@ class Home extends Component {
     render() {
         return (
             <React.Fragment>
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <div style={{height: "1000px"}}>
-                        <p className="title">
-                        Hello World! 
-                        </p>
-                        <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >
-                        Learn React
-                        </a>
-                    </div>
+                <div className="container mt-5 mb-5" style={{flex: "1 1 auto"}}>
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <div style={{height: "1000px"}}>
+                            <p className="title">
+                            Hello World! 
+                            </p>
+                            <a
+                            className="App-link"
+                            href="https://reactjs.org"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >
+                            Learn React
+                            </a>
+                        </div>
                     </header>
+                </div>
             </React.Fragment>
         )
     }
