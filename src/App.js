@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Components/Home';
 import Project from './Components/Project';
+import Login from './Components/Login';
 
 class App extends Component {
   render() {
@@ -15,19 +16,22 @@ class App extends Component {
     ];
 
     let body = (
-      <React.Fragment>
+      <div style={{display:"flex", flex: "1 1 auto", flexDirection: "column"}}>
         <Header menuItems={menuItems} currentPage=''>
         </Header>
-        <div className="container mt-5 mb-5">
+        <div className="container mt-5 mb-5" style={{flex: "1 1 auto"}}>
           <Route exact path="/" render={() =>
             <Home />
           } />
           <Route exact path="/project" render={({match}) => (
             <Project query={match.params.query} />
           )} />
+          <Route exact path="/login" render={() =>
+            <Login />
+          } />
         </div>
         <Footer />
-      </React.Fragment>
+      </div>
     );
 
     return (

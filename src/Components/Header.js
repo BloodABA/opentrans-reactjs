@@ -47,7 +47,9 @@ class Header extends Component {
                 <div className="ml-1">
                     {this.props.isLoggedIn ? 
                         <button className="btn btn-sm btn-outline-secondary">로그아웃</button> :
-                        <button className="btn btn-sm btn-outline-secondary">로그인</button>
+                        <Link to="/login">
+                            <button className="btn btn-sm btn-outline-secondary">로그인</button>
+                        </Link>
                     }
                 </div>
             </div>
