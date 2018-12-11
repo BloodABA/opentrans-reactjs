@@ -8,9 +8,23 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            mode: 'login',
             username: '',
-            password: ''
+            password: '',
+            passwordRepeat: ''
         }
+    }
+
+    handleNameInput = (e) => {
+        this.setState({username: e.target.value});
+    }
+
+    handlePasswordInput = (e) => {
+        this.setState({password: e.target.value});
+    }
+
+    handlePasswordRepeatInput = (e) => {
+        this.setState({passwordRepeat: e.target.value});
     }
     
 
@@ -135,41 +149,18 @@ class Login extends Component {
     }
     
     render() {
-
-
-        const helloWorld = "Hello World!";
-        /*
-        const template = (
-            <div className="loginContainer">
-                <div className="loginBg">
-                </div>
-                <div className="loginForm">
-                    <div className="loginButton">
-                        Hello World!
-                    </div>
-                    <form id="login">
-                        <input id="loginId" class="form-control form-control-lg" type="text" placeholder="아이디를 입력해주세요." />
-                        <input id="loginId" class="form-control form-control-lg" type="password" placeholder="비밀번호" />
-                    </form>
-                    <div className="loginButton">
-                        LOG IN
-                    </div>
-                </div>
-            </div>
-        );*/
-
         const template = (
             <div className="materialContainer">
                 <div className="box">
                     <div className="title">LOGIN</div>
                     <div className="input">
                         <label htmlFor="name">Username</label>
-                        <input type="text" name="name" id="name"/>
+                        <input type="text" name="name" id="name" onChange={this.handleNameInput}/>
                         <span className="spin"></span>
                     </div>
                     <div className="input">
                         <label htmlFor="pass">Password</label>
-                        <input type="password" name="pass" id="pass"/>
+                        <input type="password" name="pass" id="pass" onChange={this.handlePasswordInput}/>
                         <span className="spin"></span>
                     </div>
 
@@ -188,19 +179,19 @@ class Login extends Component {
 
                     <div className="input">
                         <label htmlFor="regname">Username</label>
-                        <input type="text" name="regname" id="regname"/>
+                        <input type="text" name="regname" id="regname" onChange={this.handleNameInput}/>
                         <span className="spin"></span>
                     </div>
 
                     <div className="input">
                         <label htmlFor="regpass">Password</label>
-                        <input type="password" name="regpass" id="regpass"/>
+                        <input type="password" name="regpass" id="regpass" onChange={this.handlePasswordInput}/>
                         <span className="spin"></span>
                     </div>
 
                     <div className="input">
                         <label htmlFor="reregpass">Repeat Password</label>
-                        <input type="password" name="reregpass" id="reregpass"/>
+                        <input type="password" name="reregpass" id="reregpass" onChange={this.handlePasswordRepeatInput}/>
                         <span className="spin"></span>
                     </div>
 
