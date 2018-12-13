@@ -19,17 +19,15 @@ class App extends Component {
       <div style={{display:"flex", flex: "1 1 auto", flexDirection: "column"}}>
         <Header menuItems={menuItems} currentPage=''>
         </Header>
-        <div className="container mt-5 mb-5" style={{flex: "1 1 auto"}}>
-          <Route exact path="/" render={() =>
-            <Home />
-          } />
-          <Route exact path="/project" render={({match}) => (
-            <Project query={match.params.query} />
-          )} />
-          <Route exact path="/login" render={() =>
-            <Login />
-          } />
-        </div>
+        <Route exact path="/" render={() =>
+          <Home />
+        } />
+        <Route exact path="/project" render={({match}) => (
+          <Project query={match.params.query} />
+        )} />
+        <Route exact path="/login" render={() =>
+          <Login />
+        } />
         <Footer />
       </div>
     );

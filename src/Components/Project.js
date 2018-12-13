@@ -13,8 +13,10 @@ class Project extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>{this.props.query}</h1>
-                <ProjectList />
+                <div className="container mt-5 mb-5" style={{flex: "1 1 auto"}}>
+                    <h1>{this.props.query}</h1>
+                    <ProjectList />
+                </div>
             </React.Fragment>
         )
     }
