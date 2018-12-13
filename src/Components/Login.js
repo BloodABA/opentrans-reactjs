@@ -15,6 +15,10 @@ class Login extends Component {
         }
     }
 
+    toggleMode = () => {
+        this.setState({mode: this.state.mode === 'reg' ? 'login' : 'reg'});
+    }
+    
     handleNameInput = (e) => {
         this.setState({username: e.target.value});
     }
@@ -173,7 +177,9 @@ class Login extends Component {
                 </div>
 
                 <div className="overbox">
-                    <div className="material-button alt-2"><span className="shape"></span></div>
+                    <div className="material-button alt-2" onClick={this.toggleMode}>
+                        <span className="shape"></span>
+                    </div>
 
                     <div className="title">REGISTER</div>
 
