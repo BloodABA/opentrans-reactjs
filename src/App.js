@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Components/Home';
 import Project from './Components/Project';
+import ProjectView from './Components/ProjectView';
 import Login from './Components/Login';
 
 class App extends Component {
@@ -23,7 +24,10 @@ class App extends Component {
           <Home />
         } />
         <Route exact path="/project" render={({match}) => (
-          <Project query={match.params.query} />
+          <Project/>
+        )} />
+        <Route exact path="/project/:index" render={({match}) => (
+          <ProjectView index={match.params.index} />
         )} />
         <Route exact path="/login" render={() =>
           <Login />
