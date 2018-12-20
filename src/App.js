@@ -9,7 +9,21 @@ import ProjectView from './Components/ProjectView';
 import Login from './Components/Login';
 import PageEdit from './Components/PageEdit';
 
+import API from './API'
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false
+    }
+    this.isLogin();
+  }
+  
+  isLogin = async () => {
+    console.log(await API.request('session'))
+  }
+
   render() {
     const menuItems = [
       {id: 'project', title : '프로젝트'},
@@ -19,7 +33,7 @@ class App extends Component {
 
     let body = (
       <div style={{display:"flex", flex: "1 1 auto", flexDirection: "column"}}>
-        <Header menuItems={menuItems} currentPage=''>
+        <Header menuItems={menuItems} currentPage='' isLoggedIn={this.state.isLoggedIn}>
         </Header>
         <Route exact path="/" render={() =>
           <Home />

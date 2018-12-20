@@ -3,13 +3,18 @@ const Axios = require('axios').default
 const baseUrl = "http://localhost:8080";
 
 const APIUrl = {
+    session : {
+        method : "get",
+        url: baseUrl + "/account/session"
+    },
     login : {
         method : "post",
         url: baseUrl + "/account/login"
-    }
+    },
 }
 
-async function request(key, param={}, data={}) {
+
+async function request(key, param={}, data={}, message=true) {
 
     // ai = Api Info
     const ai = APIUrl[key];
@@ -26,7 +31,9 @@ async function request(key, param={}, data={}) {
         res = await Axios.get(url);
     }
     if(!res.data.status) {
-        alert(res.data.message);
+        if(message) {
+            alert(res.data.message);
+        }
         return false;
     }
 
