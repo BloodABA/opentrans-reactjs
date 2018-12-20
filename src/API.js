@@ -55,6 +55,10 @@ const APIUrl = {
     translateInfo : {
         method : "get",
         url: baseUrl + "/translate/:translateKey"
+    },
+    update : {
+        method : "post",
+        url: baseUrl + "/project/:projectUrl/docsUpdate"
     }
 }
 

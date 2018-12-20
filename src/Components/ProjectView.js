@@ -46,6 +46,11 @@ class ProjectView extends Component {
     componentWillUnmount() {
     }
 
+    update = async () => {
+        const projectUrl = window.location.pathname.split("/project/")[1].split("/")[0]
+        var res = await API.request('update', {projectUrl:projectUrl})
+    }
+
     render() {
         let projectData = this.props.projectData;
         let project = this.state.project.data;
@@ -82,7 +87,7 @@ class ProjectView extends Component {
                             <TableRow col1="오너" col2={projectData.owner}>
                             </TableRow>
                         </Table>
-                        <button className="btn btn-outline-dark mt-3">업데이트</button>
+                        <button className="btn btn-outline-dark mt-3" onClick={this.update}>업데이트</button>
                     </CardBox>
                     <CardBox innerFrame title="Pages">
                         <div className="list-group">
