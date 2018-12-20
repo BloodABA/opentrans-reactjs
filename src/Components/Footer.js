@@ -18,7 +18,7 @@ class Footer extends Component {
                 <div className="container">
                     <div className="d-flex">
                         <div className="left">
-                            <img src={logoImg} />
+                            <img src={logoImg} alt="logo" />
                         </div>
                         <div className="right">
                             {text}

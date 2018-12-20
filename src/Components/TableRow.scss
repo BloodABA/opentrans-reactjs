@@ -1,0 +1,20 @@
+.TableRow {
+  border: 1px solid #CED0DA;
+  border-bottom: 0;
+  background-color: #F7F8FA;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  > .col1 {
+    color: #494E5F;
+    font-weight: 500;
+    padding: 13px 24px;
+    width: 160px;
+    flex: 0 0 auto;
+  }
+  > .col2 {
+    color: #494E5F;
+    padding: 13px 24px;
+    flex: 1 1 auto;
+  }
+} 

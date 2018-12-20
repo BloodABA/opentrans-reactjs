@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import Project from './Components/Project';
 import ProjectView from './Components/ProjectView';
 import Login from './Components/Login';
+import PageEdit from './Components/PageEdit';
 
 class App extends Component {
   render() {
@@ -26,12 +27,15 @@ class App extends Component {
         <Route exact path="/project" render={({match}) => (
           <Project/>
         )} />
-        <Route exact path="/project/:index" render={({match}) => (
-          <ProjectView index={match.params.index} />
+        <Route exact path="/project/:id" render={({match}) => (
+          <ProjectView index={match.params.id} />
         )} />
         <Route exact path="/login" render={() =>
           <Login />
         } />
+        <Route exact path="/project/:project/:page" render={({match}) => (
+          <PageEdit projectId={match.params.project} pageId={match.params.page} />
+        )} />
         <Footer />
       </div>
     );
