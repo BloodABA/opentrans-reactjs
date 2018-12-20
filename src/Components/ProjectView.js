@@ -82,6 +82,7 @@ class ProjectView extends Component {
                             <TableRow col1="오너" col2={projectData.owner}>
                             </TableRow>
                         </Table>
+                        <button className="btn btn-outline-dark mt-3">업데이트</button>
                     </CardBox>
                     <CardBox innerFrame title="Pages">
                         <div className="list-group">

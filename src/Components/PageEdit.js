@@ -134,7 +134,7 @@ class PageEdit extends Component {
                                                 </div>
                                             </form>
                                             {this.state.prevText.map((row, index) => (
-                                                <div className="prevTextRow">
+                                                <div className="prevTextRow" key={`prevTextRow-${index}`}>
                                                     <div className="text">
                                                         {row.text}
                                                     </div>
@@ -145,11 +145,11 @@ class PageEdit extends Component {
                                                     </span>
                                                     <button className="like btn btn-sm btn-primary mr-2">
                                                         좋아요{' '}
-                                                        <span class="badge badge-light">{row.like}</span>
+                                                        <span className="badge badge-light">{row.like}</span>
                                                     </button>
                                                     <button className="dislike btn btn-sm btn-warning mr-2">
                                                         별로에요{' '}
-                                                        <span class="badge badge-light">{row.dislike}</span>
+                                                        <span className="badge badge-light">{row.dislike}</span>
                                                     </button>
                                                     <button className="btn btn-sm btn-outline-success">
                                                         채택

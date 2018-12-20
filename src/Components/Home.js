@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home.scss';
-import logo from '../logo.svg';
+import logo from '../img/logo.svg';
+import bg from '../img/mainBg.png';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends Component {
@@ -11,26 +12,14 @@ class Home extends Component {
     }
     render() {
         return (
-            <React.Fragment>
-                <div className="container mt-5 mb-5" style={{flex: "1 1 auto"}}>
-                    <header className="App-header">
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <div style={{height: "1000px"}}>
-                            <p className="title">
-                            Hello World! 
-                            </p>
-                            <a
-                            className="App-link"
-                            href="https://reactjs.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >
-                            Learn React
-                            </a>
-                        </div>
-                    </header>
+            <div className="Home">
+                <div className="head" style={{backgroundImage: `url(${bg})`}}>
                 </div>
-            </React.Fragment>
+                <div className="homeTitle">
+                    블록체인 기반의 형상관리 기술문서 번역 플랫폼
+                    <img src={logo} className="App-logo" alt="logo" />
+                </div>
+            </div>
         )
     }
 }
