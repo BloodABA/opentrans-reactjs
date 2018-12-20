@@ -16,6 +16,7 @@ class ProjectCreate extends Component {
             id: '',
             desc: '',
             endDate: new Date(),
+            bounty: 0,
             isOss: false
         }
         this.handleDateChange = this.handleDateChange.bind(this);
@@ -28,6 +29,9 @@ class ProjectCreate extends Component {
     }
     handleDescInput = (e) => {
         this.setState({desc: e.target.value});
+    }
+    handleBountyInput = (e) => {
+        this.setState({bounty: e.target.value});
     }
     handleOssInput = (e) => {
         this.setState({isOss: !this.state.isOss});
@@ -82,8 +86,8 @@ class ProjectCreate extends Component {
                                 <div>
                                     <label htmlFor="projectId">프로젝트 ID</label>
                                     <div className="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">http://www.opentrans.work/project/</div>
+                                        <div className="input-group-prepend">
+                                            <div className="input-group-text">http://www.opentrans.work/project/</div>
                                         </div>
                                         <input type="text" className="form-control" id="projectId"
                                             placeholder="ID"  onChange={this.handleIdInput}/>
@@ -108,6 +112,17 @@ class ProjectCreate extends Component {
                                             selected={this.state.endDate}
                                             onChange={this.handleDateChange} />
                                     </div>
+                                </div>
+                                <div>
+                                    <label htmlFor="bounty">바운티</label>
+                                    <div className="input-group">
+                                        <input type="text" className="form-control" id="bounty"
+                                        onChange={this.handleBountyInput}/>
+                                        <div className="input-group-append">
+                                            <div className="input-group-text">Token</div>
+                                        </div>
+                                    </div>
+                                    <small id="projectBountyHelp" className="form-text text-muted">지급할 총 보상 토큰의 수를 입력하세요.</small>
                                 </div>
                                 <div>
                                     <label htmlFor="isOss">오픈소스 여부</label>
