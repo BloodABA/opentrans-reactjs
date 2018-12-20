@@ -1,0 +1,50 @@
+.PageEdit {
+  .headerCard {
+    background-color: #060b7c;
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .tableHead {
+    font-size: 13px;
+    padding: 5px 15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e1e4e8;
+  }
+  .tableRow {
+    cursor: pointer;
+    display: flex;
+    font-size: 13px;
+    .lineNum {
+      padding: 1px 0;
+      background-color: #f3f3f3;
+      text-align: right;
+      user-select: none;
+      flex: 0 0 50px;
+      padding-right: 10px;
+    }
+    .text {
+      &:hover {
+        background-color: #eee;
+      }
+      padding: 1px 10px;
+      flex: 1 1 auto;
+    }
+  }
+  .editBox {
+    display: flex;
+    .dummy {
+      padding: 1px 0;
+      background-color: #f3f3f3;
+      text-align: right;
+      user-select: none;
+      flex: 0 0 50px;
+      padding-right: 10px;
+    }
+    .inputBox {
+      flex: 1 1 auto;
+      background-color: #fff;
+    }
+  }
+} 

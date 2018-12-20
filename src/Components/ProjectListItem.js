@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './ProjectListItem.scss';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import dummyLogo from '../img/project_dummy_logo.svg';
@@ -24,7 +25,7 @@ class ProjectListItem extends Component {
                 <div className="text">{this.props.title}</div>
                 <div className="progress" style={{height: "7px"}}>
                     <div className="progress-bar progress-bar-striped bg-info"
-                        role="progressbar" style={{width: itemData.percent + "%"}} aria-valuenow={`${itemData.percent}`}
+                        role="progressbar" style={{width: itemData.percent + "%"}} aria-valuenow={itemData.percent}
                         aria-valuemin="0" aria-valuemax="100" />
                 </div>
             </div>
@@ -32,25 +33,40 @@ class ProjectListItem extends Component {
 
         return (
             <React.Fragment>
-                <div className={`ProjectListItem d-flex ${isHead ? "head" : "item"}`}>
-                    <div className="item-cell title">
-                        {isHead ? '' : (
+                {isHead ? (
+                    <div className="ProjectListItem d-flex head">
+                        <div className="item-cell title">
+                            {itemData.title}
+                        </div>
+                        <div className="item-cell date">
+                            {itemData.date}
+                        </div>
+                        <div className="item-cell activity">
+                            {itemData.activity}
+                        </div>
+                        <div className="item-cell Bounty">
+                            {itemData.bounty}
+                        </div>
+                    </div>
+                ) : (
+                    <Link to={`/project/${this.props.id}`} className="ProjectListItem d-flex item">
+                        <div className="item-cell title">
                             <div className="title-logo">
-                                <img src={itemData.img}></img>
+                                <img src={itemData.img} alt="itemLogo"></img>
                             </div>
-                        )}
-                        {itemData.title}
-                    </div>
-                    <div className="item-cell date">
-                        {itemData.date}
-                    </div>
-                    <div className="item-cell activity">
-                        {itemData.activity}
-                    </div>
-                    <div className="item-cell Bounty">
-                        {itemData.bounty}
-                    </div>
-                </div>
+                            {itemData.title}
+                        </div>
+                        <div className="item-cell date">
+                            {itemData.date}
+                        </div>
+                        <div className="item-cell activity">
+                            {itemData.activity}
+                        </div>
+                        <div className="item-cell Bounty">
+                            {itemData.bounty}
+                        </div>
+                    </Link>
+                )}
             </React.Fragment>
         )
     }

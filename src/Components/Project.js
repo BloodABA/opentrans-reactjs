@@ -3,6 +3,7 @@ import './Project.scss';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import ProjectList from './ProjectList';
+import InnerContainer from './InnerContainer';
 
 class Project extends Component {
     constructor(props) {
@@ -13,10 +14,9 @@ class Project extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="container mt-5 mb-5" style={{flex: "1 1 auto"}}>
-                    <h1>{this.props.query}</h1>
+                <InnerContainer>
                     <ProjectList />
-                </div>
+                </InnerContainer>
             </React.Fragment>
         )
     }

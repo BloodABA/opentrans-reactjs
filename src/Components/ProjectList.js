@@ -3,6 +3,7 @@ import './ProjectList.scss';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import ProjectListItem from './ProjectListItem';
+import CardBox from './CardBox';
 
 class ProjectList extends Component {
     constructor(props) {
@@ -15,25 +16,25 @@ class ProjectList extends Component {
         /*
         axios.get('/project')
         .then(function (response) {
-        console.log(response);
+            console.log(response);
         })
-        .catch(function (error) {
-        console.log(error);
+        .catch(function (error) { 
+            console.log(error);
         });
         */
        this.setState({listData: [
-           {id: 1, title: 'TenserFlow', desc: 'The best way to relive stress'},
-           {id: 2, title: 'Facebook React', desc: 'The best way to relive stress'},
-           {id: 3, title: 'PepsiCola', desc: 'The best way to relive stress'},
-           {id: 4, title: 'Emart', desc: 'The best way to relive stress'},
-           {id: 5, title: 'Apple iPad', desc: 'The best way to relive stress'},
-           {id: 6, title: 'Kleenex', desc: 'The best way to relive stress'},
-           {id: 7, title: 'TenserFlow', desc: 'The best way to relive stress'},
-           {id: 8, title: 'Facebook React', desc: 'The best way to relive stress'},
-           {id: 9, title: 'PepsiCola', desc: 'The best way to relive stress'},
-           {id: 10, title: 'Emart', desc: 'The best way to relive stress'},
-           {id: 11, title: 'Apple iPad', desc: 'The best way to relive stress'},
-           {id: 12, title: 'Kleenex', desc: 'The best way to relive stress'}
+           {id: 'tensorflow1', title: 'TensorFlow', desc: 'The best way to relive stress'},
+           {id: 'tensorflow2', title: 'Facebook React', desc: 'The best way to relive stress'},
+           {id: 'tensorflow3', title: 'PepsiCola', desc: 'The best way to relive stress'},
+           {id: 'tensorflow4', title: 'Emart', desc: 'The best way to relive stress'},
+           {id: 'tensorflow5', title: 'Apple iPad', desc: 'The best way to relive stress'},
+           {id: 'tensorflow6', title: 'Kleenex', desc: 'The best way to relive stress'},
+           {id: 'tensorflow7', title: 'TensorFlow', desc: 'The best way to relive stress'},
+           {id: 'tensorflow8', title: 'Facebook React', desc: 'The best way to relive stress'},
+           {id: 'tensorflow9', title: 'PepsiCola', desc: 'The best way to relive stress'},
+           {id: 'tensorflow10', title: 'Emart', desc: 'The best way to relive stress'},
+           {id: 'tensorflow11', title: 'Apple iPad', desc: 'The best way to relive stress'},
+           {id: 'tensorflow12', title: 'Kleenex', desc: 'The best way to relive stress'}
        ]});
     }
     render() {
@@ -54,9 +55,9 @@ class ProjectList extends Component {
 
         return (
             <div className="ProjectList">
-                <div className="projectTable">
+                <CardBox>
                     {body}
-                </div>
+                </CardBox>
             </div>
         )
     }

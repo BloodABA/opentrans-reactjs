@@ -59,7 +59,7 @@ class Header extends Component {
             <nav className="navbar navbar-expand-lg navbar-light Header Header-Top">
                 <div className="container">
                     <Link to="/" className="navbar-brand">
-                        <img src={logoImg} style={{width:'150px'}}></img>
+                        <img src={logoImg} style={{width:'150px'}} alt="logo"></img>
                     </Link>
                     {headerMenu}
                 </div>
@@ -70,7 +70,7 @@ class Header extends Component {
             <nav id="fixedHeader" className="navbar navbar-expand-lg navbar-light Header Header-Fixed">
                 <div className="container">
                     <Link to="/" className="navbar-brand">
-                        <img src={logoImgWhite} style={{width:'150px'}}></img>
+                        <img src={logoImgWhite} style={{width:'150px'}} alt="logo"></img>
                     </Link>
                     {headerMenu}
                 </div>
