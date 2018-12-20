@@ -33,6 +33,7 @@ class Header extends Component {
     }; 
 
     render() {
+
         let menuItems = this.props.menuItems.map((item, idx) => (
             <li className={`nav-item Item ${item.id === this.props.currentPage ? 'active' : ''}`} key={`menuItem-${idx}`}>
                 <Link to={'/'+item.id} className="nav-link">{item.title}</Link>
@@ -83,6 +84,7 @@ class Header extends Component {
                 {fixedHeader}
             </React.Fragment>
         )
+
     }
 }
 

@@ -37,9 +37,10 @@ class App extends Component {
 
   render() {
     const menuItems = [
+      {id: 'projectCreate', title : '프로젝트 생성'},
       {id: 'project', title : '프로젝트'},
       {id: 'voting', title : '보팅'},
-      {id: 'mypage', title : '마이페이지'}
+      {id: 'mypage', title : '마이페이지'},
     ];
 
     let body = (
