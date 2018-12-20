@@ -8,6 +8,7 @@ import Project from './Components/Project';
 import ProjectView from './Components/ProjectView';
 import Login from './Components/Login';
 import PageEdit from './Components/PageEdit';
+import ProjectCreate from './Components/ProjectCreate';
 
 import API from './API'
 
@@ -37,7 +38,7 @@ class App extends Component {
 
   render() {
     const menuItems = [
-      {id: 'projectCreate', title : '프로젝트 생성'},
+      {id: 'project/create', title : '프로젝트 생성'},
       {id: 'project', title : '프로젝트'},
       {id: 'voting', title : '보팅'},
       {id: 'mypage', title : '마이페이지'},
@@ -54,6 +55,8 @@ class App extends Component {
           <Project/>
         )} />
         <Route exact path="/project/:id" render={({match}) => (
+          match.params.id === 'create' ? 
+          <ProjectCreate /> : 
           <ProjectView index={match.params.id} />
         )} />
         <Route exact path="/login" render={() =>

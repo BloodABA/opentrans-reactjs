@@ -63,9 +63,9 @@ class ProjectView extends Component {
                         </Table>
                     </CardBox>
                     <CardBox innerFrame title="Pages">
-                        <div class="list-group">
+                        <div className="list-group">
                             {projectData.pages.map(doc => 
-                                <Link to={`${projectData.id}/${doc.id}`} key={`doc-${doc.id}`}class="list-group-item list-group-item-action">{doc.title}</Link>
+                                <Link to={`${projectData.id}/${doc.id}`} key={`doc-${doc.id}`} className="list-group-item list-group-item-action">{doc.title}</Link>
                             )}
                         </div>
                     </CardBox>
