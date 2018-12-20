@@ -16,7 +16,9 @@ class ProjectCreate extends Component {
             id: '',
             desc: '',
             endDate: new Date(),
+            isInfinite: false,
             bounty: 0,
+            giturl: '',
             isOss: false
         }
         this.handleDateChange = this.handleDateChange.bind(this);
@@ -33,8 +35,14 @@ class ProjectCreate extends Component {
     handleBountyInput = (e) => {
         this.setState({bounty: e.target.value});
     }
+    handleGiturlInput = (e) => {
+        this.setState({giturl: e.target.value});
+    }
     handleOssInput = (e) => {
         this.setState({isOss: !this.state.isOss});
+    }
+    handleIsInfiniteInput = (e) => {
+        this.setState({isInfinite: !this.state.isInfinite});
     }
     handleDateChange(date) {
         this.setState({endDate: date});
@@ -94,6 +102,12 @@ class ProjectCreate extends Component {
                                     </div>
                                 </div>
                                 <div>
+                                    <label htmlFor="giturl">Git URL</label>
+                                    <input type="text" className="form-control" id="giturl"
+                                    placeholder="i.e. https://github.com/facebook/react.git"  onChange={this.handleGiturlInput}/>
+                                    <small id="projectGiturlHelp" className="form-text text-muted">.git 파일의 URL을 입력해주세요.</small>
+                                </div>
+                                <div>
                                     <fieldset disabled>
                                         <label htmlFor="description">언어 번역 설정</label>
                                         <div className="d-flex">
@@ -104,20 +118,25 @@ class ProjectCreate extends Component {
                                 </div>
                                 <div>
                                     <label htmlFor="description">마감일</label>
-                                    <div className="endDate">
+                                    <div className="endDate d-flex">
                                         <DatePicker
+                                            disabled={this.state.isInfinite}
                                             className="form-control"
                                             dateFormat="yyyy/MM/dd"
                                             withPortal
                                             selected={this.state.endDate}
                                             onChange={this.handleDateChange} />
+                                        <div className="infinite ml-3">
+                                            <input type="checkbox" className="mr-2" id="infinite"  onChange={this.handleIsInfiniteInput}/>
+                                            <label className="form-check-label" htmlFor="infinite">미설정</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>
                                     <label htmlFor="bounty">바운티</label>
                                     <div className="input-group">
                                         <input type="text" className="form-control" id="bounty"
-                                        onChange={this.handleBountyInput}/>
+                                        onChange={this.handleBountyInput} disabled={this.state.isOss} />
                                         <div className="input-group-append">
                                             <div className="input-group-text">Token</div>
                                         </div>
