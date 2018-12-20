@@ -1,10 +1,15 @@
-.head {
-  height: 1000px;
-  background-size: cover;
-}
-.homeTitle {
-  padding: 40px 20px 20px 20px;
-  text-align: center;
-  font-weight: 700px;
-  font-size: 30px;
+.Home {
+  .head {
+    height: 300px;
+    background-size: cover;
+  }
+  .homeTitle {
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    font-weight: 700px;
+    font-size: 30px;
+  }
+  .App-logo {
+    max-height: 500px;
+  }
 }
