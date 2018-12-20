@@ -1,0 +1,28 @@
+.ProjectCreate {
+  .createContainer {
+    width: 600px;
+    margin: auto;
+  }
+  .projectForm {
+    border-top: 1px solid #ddd;
+    padding: 10px 5px;
+    > div > label {
+      margin-top: 15px;
+      font-weight: 700;
+    }
+  }
+  #projectName {
+  }
+  #description {
+  }
+  #projectId {
+    width: 200px;
+  }
+  #originLang {
+    flex: 0 1 200px;
+    margin-right: 20px;
+  }
+  #transLang {
+    flex: 0 1 200px;
+  }
+} 

@@ -1,5 +1,8 @@
 .ProjectListItem {
   display: inline-block;
+  &:hover {
+    background-color: #F7F8FA;
+  }
   .item-cell {
     padding: 16px;
     flex: 0 0 100px;

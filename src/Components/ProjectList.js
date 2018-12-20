@@ -3,6 +3,9 @@ import './ProjectList.scss';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import ProjectListItem from './ProjectListItem';
+import CardBox from './CardBox';
+
+import API from '../API'
 
 class ProjectList extends Component {
     constructor(props) {
@@ -11,30 +14,34 @@ class ProjectList extends Component {
             listData: []
         }
     }
-    componentDidMount() {
+    async componentDidMount() {
         /*
         axios.get('/project')
         .then(function (response) {
-        console.log(response);
+            console.log(response);
         })
-        .catch(function (error) {
-        console.log(error);
+        .catch(function (error) { 
+            console.log(error);
         });
         */
-       this.setState({listData: [
-           {id: 1, title: 'TenserFlow', desc: 'The best way to relive stress'},
-           {id: 2, title: 'Facebook React', desc: 'The best way to relive stress'},
-           {id: 3, title: 'PepsiCola', desc: 'The best way to relive stress'},
-           {id: 4, title: 'Emart', desc: 'The best way to relive stress'},
-           {id: 5, title: 'Apple iPad', desc: 'The best way to relive stress'},
-           {id: 6, title: 'Kleenex', desc: 'The best way to relive stress'},
-           {id: 7, title: 'TenserFlow', desc: 'The best way to relive stress'},
-           {id: 8, title: 'Facebook React', desc: 'The best way to relive stress'},
-           {id: 9, title: 'PepsiCola', desc: 'The best way to relive stress'},
-           {id: 10, title: 'Emart', desc: 'The best way to relive stress'},
-           {id: 11, title: 'Apple iPad', desc: 'The best way to relive stress'},
-           {id: 12, title: 'Kleenex', desc: 'The best way to relive stress'}
-       ]});
+
+        const listData = []
+        const projects = await API.request('project');
+        if(!projects) return;
+        for(let i=0;i<projects.data.length;i++) {
+            listData.push({
+                id: projects.data[i].projectUrl,
+                title: projects.data[i].project,
+                desc: projects.data[i].description,
+                openstamp: projects.data[i].openstamp,
+                active: projects.data[i].isOpensource ? "오픈소스" : "기업용",
+                bounty: projects.data[i].bounty
+            })
+        }
+
+        console.log(listData);
+
+       this.setState({listData: listData});
     }
     render() {
         let body = this.state.listData.map(item => (
@@ -42,6 +49,9 @@ class ProjectList extends Component {
                 id={item.id}
                 title={item.title}
                 desc={item.desc}
+                date={item.openstamp}
+                active={item.active}
+                bounty={item.bounty}
                 key={`prjItem-${item.id}`}
             />
         ));
@@ -54,9 +64,9 @@ class ProjectList extends Component {
 
         return (
             <div className="ProjectList">
-                <div className="projectTable">
+                <CardBox>
                     {body}
-                </div>
+                </CardBox>
             </div>
         )
     }
