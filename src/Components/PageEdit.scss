@@ -31,6 +31,12 @@
       padding: 1px 10px;
       flex: 1 1 auto;
     }
+    .text-selected {
+      padding: 5px 10px;
+      flex: 1 1 auto;
+      background-color: #eee;
+      font-size: 16px;
+    }
   }
   .editBox {
     display: flex;
