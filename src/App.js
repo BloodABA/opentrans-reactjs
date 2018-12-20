@@ -21,7 +21,18 @@ class App extends Component {
   }
   
   isLogin = async () => {
-    console.log(await API.request('session'))
+    const session = await API.request('session', {}, {}, false);
+
+    if(!session) {
+      this.setState({
+        isLoggedIn: false
+      })
+      return;
+    }
+    this.setState({
+      isLoggedIn: true,
+      username: session.username
+    })
   }
 
   render() {

@@ -1,4 +1,7 @@
-const Axios = require('axios').default
+const Axios = require('axios').create({
+    baseURL: 'http://localhost:3000/',
+    withCredentials: true
+})
 
 const baseUrl = "http://localhost:8080";
 
