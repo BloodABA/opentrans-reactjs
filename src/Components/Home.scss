@@ -1,15 +1,20 @@
 .Home {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
   .head {
+    flex: 1 0 200px;
     height: 300px;
     background-size: cover;
   }
   .homeTitle {
+    flex: 0 1 auto;
     padding: 40px 20px 20px 20px;
     text-align: center;
-    font-weight: 700px;
+    font-weight: 700;
     font-size: 30px;
-  }
-  .App-logo {
-    max-height: 500px;
+    .App-logo {
+      max-height: 400px;
+    }
   }
 }
