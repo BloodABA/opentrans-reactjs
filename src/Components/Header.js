@@ -45,10 +45,24 @@ class Header extends Component {
             <div className="collapse navbar-collapse" id="ca-navbar">
                 <ul className="navbar-nav ml-auto" id="nav">
                     {menuItems}
+                    {this.props.isLoggedIn ?
+                        <React.Fragment>
+                            <li className={`nav-item Item ${'/project/create' === this.props.currentPage ? 'active' : ''}`}>
+                                <Link to={'/project/create'} className="nav-link">프로젝트 생성</Link>
+                            </li>
+                            <li className={`nav-item Item ${'/mypage' === this.props.currentPage ? 'active' : ''}`}>
+                                <Link to={'/mypage'} className="nav-link">마이페이지</Link>
+                            </li>
+                        </React.Fragment>
+                        :
+                        <React.Fragment></React.Fragment>
+                    }
                 </ul>
                 <div className="ml-1">
-                    {this.props.isLoggedIn ? 
-                        <button className="btn btn-sm btn-outline-secondary" onClick={() => { API.request('logout'); window.location.href='/'; }}>로그아웃</button>
+                    {this.props.isLoggedIn ?
+                        <React.Fragment>
+                            <button className="btn btn-sm btn-outline-secondary" onClick={() => { API.request('logout'); window.location.href='/'; }}>로그아웃</button>
+                        </React.Fragment>
                         :
                         <Link to="/login">
                             <button className="btn btn-sm btn-outline-secondary">로그인</button>
