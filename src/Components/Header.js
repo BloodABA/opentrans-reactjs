@@ -5,6 +5,7 @@ import './Header.scss';
 
 import logoImg from '../img/opentrans_logo.svg';
 import logoImgWhite from '../img/opentrans_logo_white.svg';
+import API from '../API';
 
 
 class Header extends Component {
@@ -47,7 +48,8 @@ class Header extends Component {
                 </ul>
                 <div className="ml-1">
                     {this.props.isLoggedIn ? 
-                        <button className="btn btn-sm btn-outline-secondary">로그아웃</button> :
+                        <button className="btn btn-sm btn-outline-secondary" onClick={() => { API.request('logout'); window.location.href='/'; }}>로그아웃</button>
+                        :
                         <Link to="/login">
                             <button className="btn btn-sm btn-outline-secondary">로그인</button>
                         </Link>

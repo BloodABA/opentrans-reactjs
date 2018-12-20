@@ -43,6 +43,10 @@ const APIUrl = {
     docsApply : {
         method : "post",
         url: baseUrl + "/project/:projectUrl/docsApply"
+    },
+    logout : {
+        method : "get",
+        url: baseUrl + "/account/logout"
     }
 }
 
