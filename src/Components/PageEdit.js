@@ -34,6 +34,17 @@ class PageEdit extends Component {
 
     }
 
+    selectRow = (row) => {
+        if (row.text == "") return;
+        this.setState({selectedRow: row.key});
+    }
+
+    keyPress(e){
+        if(e.keyCode == 13){
+           console.log('>> value', e.target.value);
+        }
+     }
+
     componentWillUnmount() {
     }
 
@@ -66,7 +77,7 @@ class PageEdit extends Component {
                             {` lines`}
                         </div>
                         {pageData.contents.map((row, index) => (
-                            <div onClick={()=> this.setState({selectedRow: row.key})}>
+                            <div key={`row-${index}`} onClick={()=>this.selectRow(row)}>
                                 <div className="tableRow">
                                     <div className="lineNum">
                                         {index + 1}
@@ -80,9 +91,9 @@ class PageEdit extends Component {
                                         <div className="dummy">{' '}</div>
                                         <form className="inputBox p-2">
                                             <div className="input-group">
-                                                <input id="editInput" className="form-control" placeholder="번역문을 입력해주세요." />
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary" type="button" id="editInputBtn">완료</button>
+                                                <input id="editInput" onKeyDown={this.keyPress} className="form-control" placeholder="번역문을 입력해주세요." />
+                                                <div className="input-group-append">
+                                                    <button className="btn btn-outline-primary" type="button" id="editInputBtn">완료</button>
                                                 </div>
                                             </div>
                                         </form>
