@@ -6,6 +6,7 @@
     background-color: #fff;
   }
   &-Fixed {
+    z-index: 10;
     background-color: #060b7c;
     position: fixed !important;
     top: -160px;
