@@ -10,12 +10,12 @@ class ProjectListItem extends Component {
         let itemData = isHead ? {
             title: "Project",
             date: "Date",
-            activity: "Activity",
+            active: "Activity",
             bounty: "Bounty"
         } : {
             title: this.props.title,
             date: this.props.date,
-            activity: this.props.activity,
+            active: this.props.active,
             bounty: this.props.bounty,
             img: this.props.img ? this.props.img : dummyLogo,
             percent: Math.random()*100
@@ -42,7 +42,7 @@ class ProjectListItem extends Component {
                             {itemData.date}
                         </div>
                         <div className="item-cell activity">
-                            {itemData.activity}
+                            {itemData.active}
                         </div>
                         <div className="item-cell Bounty">
                             {itemData.bounty}
@@ -60,7 +60,7 @@ class ProjectListItem extends Component {
                             {itemData.date}
                         </div>
                         <div className="item-cell activity">
-                            {itemData.activity}
+                            {itemData.active}
                         </div>
                         <div className="item-cell Bounty">
                             {itemData.bounty}
