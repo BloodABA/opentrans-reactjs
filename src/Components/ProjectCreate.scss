@@ -1,3 +1,42 @@
 .ProjectCreate {
-  
+  .createContainer {
+    width: 700px;
+    margin: auto;
+  }
+  .projectForm {
+    border-top: 1px solid #ddd;
+    padding: 10px 5px;
+    label {
+      margin-top: 15px;
+      font-weight: 700;
+    }
+  }
+  .projectId {
+    display: flex;
+    .prefix {
+      flex: 0 0 100px;
+      line-height: 38px;
+      margin-right: 10px;
+      font-size: 20px;
+    }
+    .projectIdInput {
+      flex: 1 1 auto;
+    }
+  }
+  #projectName {
+    width: 400px;
+  }
+  #description {
+    // width: 500px;
+  }
+  #projectId {
+    width: 200px;
+  }
+  #originLang {
+    flex: 0 1 200px;
+    margin-right: 20px;
+  }
+  #transLang {
+    flex: 0 1 200px;
+  }
 } 

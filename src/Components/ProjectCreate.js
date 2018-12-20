@@ -2,13 +2,24 @@ import React, { Component } from 'react';
 import './ProjectCreate.scss';
 import InnerContainer from './InnerContainer';
 import CardBox from './CardBox';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class ProjectCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            endDate: new Date()
         }
+        this.handleDateChange = this.handleDateChange.bind(this);
     }
+
+    handleDateChange(date) {
+        this.setState({
+          endDate: date
+        });
+      }
     
     componentDidMount() {
     }
@@ -18,28 +29,57 @@ class ProjectCreate extends Component {
         const helloWorld = "Hello World!";
 
         return (
-            <React.Fragment>
+            <div className="ProjectCreate">
                 <InnerContainer>
-                    <CardBox innerFrame title="프로젝트 생성">
-                        <form>
-                            <div className="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                            </div>
-                            <div className="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                            </div>
-                            <div className="form-group form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label className="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
-                        </form>
-                    </CardBox>
+                    <div className="createContainer">
+                        <CardBox innerFrame title="프로젝트 생성">
+                            <form className="projectForm">
+                                <div>
+                                    <label for="projectName">프로젝트명</label>
+                                    <input type="text" className="form-control" id="projectName" aria-describedby="emailHelp" placeholder="프로젝트명" />
+                                    <small id="projectNameHelp" className="form-text text-muted">프로젝트 이름을 입력해주세요.</small>
+                                </div>
+                                <div>
+                                    <label for="description">프로젝트 설명</label>
+                                    <input type="text" className="form-control" id="description" placeholder="프로젝트 설명" />
+                                </div>
+                                <div>
+                                    <label for="projectId">프로젝트 ID</label>
+                                    <div className="projectId">
+                                        <div className="prefix">opentrans.work/project/</div>
+                                        <div className="projectIdInput">
+                                            <input type="text" className="form-control" id="projectId" placeholder="ID" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <fieldset disabled>
+                                        <label for="description">언어 번역 설정</label>
+                                        <div className="d-flex">
+                                            <input type="text" className="form-control" id="originLang" placeholder="영어" />
+                                            <input type="text" className="form-control" id="transLang" placeholder="한국어" />
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div className="mb-4">
+                                    <label for="description">마감일</label>
+                                    <div className="endDate">
+                                        <DatePicker
+                                            className="form-control"
+                                            dateFormat="yyyy/MM/dd"
+                                            withPortal
+                                            selected={this.state.endDate}
+                                            onChange={this.handleDateChange} />
+                                    </div>
+                                </div>
+                                <div className="d-flex flex-row-reverse">
+                                    <button type="submit" className="btn btn-outline-secondary">프로젝트 생성</button>
+                                </div>
+                            </form>
+                        </CardBox>
+                    </div>
                 </InnerContainer>
-            </React.Fragment>
+            </div>
         )
     }
 }
