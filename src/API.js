@@ -51,6 +51,10 @@ const APIUrl = {
     LogSubmit : {
         method : "post",
         url: baseUrl + "/translate/:projectUrl/LogSubmit"
+    },
+    translateInfo : {
+        method : "get",
+        url: baseUrl + "/translate/:translateKey"
     }
 }
 

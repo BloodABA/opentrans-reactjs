@@ -44,9 +44,16 @@ class PageEdit extends Component {
 
     }
 
-    selectRow = (row) => {
+    selectRow = async (row) => {
         if (row.text == "") return;
-        this.setState({selectedRow: row.key});
+        const prevText = []
+        const res = await API.request('translateInfo', {translateKey: row.key})
+        console.log(res.data)
+        if(!res) return;
+        this.setState({
+            selectedRow: row.key,
+            // prevText : res.data
+        });
     }
 
     keyPress(e){
