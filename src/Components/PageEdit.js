@@ -69,7 +69,11 @@ class PageEdit extends Component {
                                 {this.state.selectedRow === index ? (
                                     <div className="editBox">
                                         <div className="dummy">{' '}</div>
-                                        <div className="inputBox">a</div>
+                                        <form className="inputBox p-2">
+                                            <div className="form-group">
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            </div>
+                                        </form>
                                     </div>
                                 ) : ''}
                             </div>
