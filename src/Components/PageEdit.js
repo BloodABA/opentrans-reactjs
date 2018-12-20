@@ -71,7 +71,7 @@ class PageEdit extends Component {
                                     <div className="lineNum">
                                         {index + 1}
                                     </div>
-                                    <div className="text">
+                                    <div className={this.state.selectedRow === row.key ? 'text-selected': 'text'}>
                                         {row.text}
                                     </div>
                                 </div>
@@ -79,8 +79,11 @@ class PageEdit extends Component {
                                     <div className="editBox">
                                         <div className="dummy">{' '}</div>
                                         <form className="inputBox p-2">
-                                            <div className="form-group">
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <div className="input-group">
+                                                <input id="editInput" className="form-control" placeholder="번역문을 입력해주세요." />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-primary" type="button" id="editInputBtn">완료</button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
