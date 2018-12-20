@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './Login.scss';
 import $ from 'jquery'
-
 import bgImg from '../img/loginBg.png';
+
+import API from '../API'
 
 class Login extends Component {
     constructor(props) {
@@ -14,6 +15,18 @@ class Login extends Component {
             passwordRepeat: ''
         }
     }
+
+    login = async () => {
+       const username = this.state.username
+       const password = this.state.password
+       var res = await API.request("login", {}, {
+          username: username,
+          password: password
+       })
+       if(res) {
+         window.location.href = "/";
+       }
+   }
 
     toggleMode = () => {
         this.setState({mode: this.state.mode === 'reg' ? 'login' : 'reg'});
@@ -169,7 +182,7 @@ class Login extends Component {
                     </div>
 
                     <div className="button login">
-                        <button><span>LOGIN</span> <span className="fa fa-check">✔</span></button>
+                        <button onClick={this.login}><span>LOGIN</span> <span className="fa fa-check">✔</span></button>
                     </div>
 
                     <a href="" className="pass-forgot">Forgot your password?</a>
