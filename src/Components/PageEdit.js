@@ -3,37 +3,46 @@ import './PageEdit.scss';
 import InnerContainer from './InnerContainer';
 import CardBox from './CardBox';
 
+import API from '../API'
+
 class PageEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedRow: -1
+            selectedRow: -1,
+            project: {},
+            lines: []
         }
     }
     
-    componentDidMount() {
+    async componentDidMount() {
+        const projectUrl = window.location.pathname.split("/project/")[1].split("/")[0]
+        const docKey = window.location.pathname.split("/project/")[1].split("/")[1]
+        const project = await API.request('projectDetail', {projectUrl: projectUrl}, {})
+        if(!project) return;
+
+        this.setState({
+            project: project.data
+        })
+
+        const lines = await API.request('docsRead', {projectUrl: projectUrl, fileHash: docKey})
+        if(!lines) return;
+        
+        this.setState({
+            lines: lines.data
+        })
+
     }
+
     componentWillUnmount() {
     }
+
     render() {
         const helloWorld = "Hello World!";
         let pageData = {
-            projectTitle: 'TensorFlow',
+            projectTitle: this.state.project.project,
             pageTitle: 'Page1',
-            contents: [
-                ['1a', `import Header from './Components/Header';`],
-                ['1b', `import Footer from './Components/Footer';`],
-                ['1c', `import Home from './Components/Home';`],
-                ['1d', `import Project from './Components/Project';`],
-                ['1e', `import Login from './Components/Login';`],
-                ['1f', `class App extends Component {`],
-                ['1g', `render() {`],
-                ['1h', `const menuItems = [`],
-                ['1i', `{id: 'project', title : '프로젝트'},`],
-                ['1j', `{id: 'voting', title : '보팅'},`],
-                ['1k', `{id: 'mypage', title : '마이페이지'}`],
-                ['1l', `];`]
-            ]
+            contents: this.state.lines
         }
 
         return (
@@ -56,17 +65,17 @@ class PageEdit extends Component {
                             <b>{pageData.contents.length}</b>
                             {` lines`}
                         </div>
-                        {pageData.contents.map((row,index) => (
-                            <div onClick={()=> this.setState({selectedRow: index})} key={`pagerow-${index}`}>
+                        {pageData.contents.map((row, index) => (
+                            <div onClick={()=> this.setState({selectedRow: row.key})}>
                                 <div className="tableRow">
                                     <div className="lineNum">
                                         {index + 1}
                                     </div>
                                     <div className="text">
-                                        {row[1]}
+                                        {row.text}
                                     </div>
                                 </div>
-                                {this.state.selectedRow === index ? (
+                                {this.state.selectedRow === row.key ? (
                                     <div className="editBox">
                                         <div className="dummy">{' '}</div>
                                         <form className="inputBox p-2">
