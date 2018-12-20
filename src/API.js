@@ -47,6 +47,10 @@ const APIUrl = {
     logout : {
         method : "get",
         url: baseUrl + "/account/logout"
+    },
+    LogSubmit : {
+        method : "post",
+        url: baseUrl + "/translate/:projectUrl/LogSubmit"
     }
 }
 
