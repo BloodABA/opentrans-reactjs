@@ -16,9 +16,14 @@ class PageEdit extends Component {
             project: {},
             lines: [],
             editInput : "",
+            prevText: [
+                {id: 1, text:'Facebook은 행동 강령을 채택하여 프로젝트 참여자가1!', like:3, dislike: 9},
+                {id: 2, text:'Facebook은 행동 강령을 채택하여 프로젝트 참여자가2!', like:7, dislike: 3},
+                {id: 3, text:'Facebook은 행동 강령을 채택하여 프로젝트 참여자가3!', like:9, dislike: 2}
+            ]
         }
     }
-    
+
     async componentDidMount() {
         const projectUrl = window.location.pathname.split("/project/")[1].split("/")[0]
         const docKey = window.location.pathname.split("/project/")[1].split("/")[1]
@@ -112,14 +117,39 @@ class PageEdit extends Component {
                                 {this.state.selectedRow === row.key ? (
                                     <div className="editBox">
                                         <div className="dummy">{' '}</div>
-                                        <form className="inputBox p-2">
-                                            <div className="input-group">
-                                                <input id="editInput" className="form-control" placeholder="번역문을 입력해주세요." onChange={(e) => { this.setState({editInput: e.target.value}); }}/>
-                                                <div className="input-group-append">
-                                                    <button className="btn btn-outline-primary" type="button" id="editInputBtn" onClick={this.submit}>완료</button>
+                                        <div className="w-100">
+                                            <form className="inputBox p-2">
+                                                <div className="input-group">
+                                                    <input id="editInput" className="form-control" placeholder="번역문을 입력해주세요." onChange={(e) => { this.setState({editInput: e.target.value}); }}/>
+                                                    <div className="input-group-append">
+                                                        <button className="btn btn-outline-primary" type="button" id="editInputBtn" onClick={this.submit}>완료</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                            {this.state.prevText.map((row, index) => (
+                                                <div className="prevTextRow">
+                                                    <div className="text">
+                                                        {row.text}
+                                                    </div>
+                                                    <span className="percent mr-2">
+                                                        <span className="badge badge-info">
+                                                            {Math.floor(row.like / (row.like+row.dislike) * 100)+'% '}
+                                                        </span>
+                                                    </span>
+                                                    <button className="like btn btn-sm btn-primary mr-2">
+                                                        좋아요{' '}
+                                                        <span class="badge badge-light">{row.like}</span>
+                                                    </button>
+                                                    <button className="dislike btn btn-sm btn-warning mr-2">
+                                                        별로에요{' '}
+                                                        <span class="badge badge-light">{row.dislike}</span>
+                                                    </button>
+                                                    <button className="btn btn-sm btn-outline-success">
+                                                        채택
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 ) : ''}
                             </div>

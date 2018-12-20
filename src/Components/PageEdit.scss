@@ -52,5 +52,27 @@
       flex: 1 1 auto;
       background-color: #fff;
     }
+    .prevTextRow {
+      border-bottom: 1px solid #eee;
+      padding: 5px 10px;
+      display: flex;
+      flex-direction: row;
+      .percent {
+        line-height: 31px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .text {
+        flex: 1 1 auto;
+        font-size: 14px;
+        line-height: 31px;
+      }
+      .like {
+
+      }
+      .dislike {
+
+      }
+    }
   }
 } 
