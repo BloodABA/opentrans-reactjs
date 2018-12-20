@@ -63,12 +63,12 @@ class ProjectCreate extends Component {
                                 </div>
                                 <div>
                                     <label htmlFor="projectId">프로젝트 ID</label>
-                                    <div className="projectId">
-                                        <div className="prefix">opentrans.work/project/</div>
-                                        <div className="projectIdInput">
-                                            <input type="text" className="form-control" id="projectId"
-                                                placeholder="ID"  onChange={this.handleIdInput}/>
+                                    <div className="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">http://www.opentrans.work/project/</div>
                                         </div>
+                                        <input type="text" className="form-control" id="projectId"
+                                            placeholder="ID"  onChange={this.handleIdInput}/>
                                     </div>
                                 </div>
                                 <div>

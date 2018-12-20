@@ -1,6 +1,6 @@
 .ProjectCreate {
   .createContainer {
-    width: 700px;
+    width: 600px;
     margin: auto;
   }
   .projectForm {
@@ -11,23 +11,9 @@
       font-weight: 700;
     }
   }
-  .projectId {
-    display: flex;
-    .prefix {
-      flex: 0 0 100px;
-      line-height: 38px;
-      margin-right: 10px;
-      font-size: 20px;
-    }
-    .projectIdInput {
-      flex: 1 1 auto;
-    }
-  }
   #projectName {
-    width: 400px;
   }
   #description {
-    // width: 500px;
   }
   #projectId {
     width: 200px;
