@@ -25,7 +25,7 @@ class ProjectView extends Component {
 
         const pages = []
 
-        const docsList = await API.request('docsList', {projectUrl: projectUrl}, {})
+        const docsList = await API.request('docsListMD', {projectUrl: projectUrl}, {})
         console.log(docsList.data)
         if(!docsList) return;
 

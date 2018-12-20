@@ -28,6 +28,10 @@ const APIUrl = {
         method : "get",
         url: baseUrl + "/project/:projectUrl/list"
     },
+    docsListMD : {
+        method : "get",
+        url: baseUrl + "/project/:projectUrl/list/md"
+    },
     docsRead : {
         method : "get",
         url: baseUrl + "/project/:projectUrl/:fileHash"
@@ -39,6 +43,10 @@ const APIUrl = {
     docsApply : {
         method : "post",
         url: baseUrl + "/project/:projectUrl/docsApply"
+    },
+    logout : {
+        method : "get",
+        url: baseUrl + "/account/logout"
     }
 }
 
