@@ -7,41 +7,62 @@ import CardBox from './CardBox';
 import Table from './Table';
 import TableRow from './TableRow';
 
+import API from '../API'
+
 class ProjectView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            project: {}
         }
     }
     
-    componentDidMount() {
-        /*
-        axios.get('/project/${this.props.id}')
-        .then(function (response) {
-            console.log(response);
+    async componentDidMount() {
+       
+        const projectUrl = window.location.pathname.split("/project/")[1].split("/")[0]
+        const project = await API.request('projectDetail', {projectUrl: projectUrl}, {})
+        if(!project) return;
+
+        const pages = []
+
+        const docsList = await API.request('docsList', {projectUrl: projectUrl}, {})
+        console.log(docsList.data)
+        if(!docsList) return;
+
+        for(let i=0;i<docsList.data.length;i++) {
+            pages.push({
+                "key" : docsList.data[i].md5,
+                "title" : docsList.data[i].path
+            })
+        }
+        
+        this.setState({
+            project: project,
+            pages: pages
         })
-        .catch(function (error) { 
-            console.log(error);
-        });
-        */
+
     }
+
     componentWillUnmount() {
     }
+
     render() {
         let projectData = this.props.projectData;
+        let project = this.state.project.data;
+
+        if(!project) {
+            return (<div></div>)
+        }
+
+        console.log(this.state.project);
 
         projectData = {
-            id : "tensorflow",
-            title : "TensorFlow",
-            desc : "TensorFlow is most beautiful opensource project in the world!",
-            bounty : "$ 123,456,000",
-            owner : "내가 오너다",
-            pages: [
-                {id: '1', title: "1페이지"}, 
-                {id: '2', title: "2페이지"}, 
-                {id: '3', title: "3페이지"}, 
-                {id: '4', title: "4페이지"}
-            ]
+            id : project.projectUrl,
+            title : project.project,
+            desc : project.description,
+            bounty : project.bounty,
+            owner : project.owner,
+            pages: this.state.pages
         }
 
         return (
@@ -65,7 +86,7 @@ class ProjectView extends Component {
                     <CardBox innerFrame title="Pages">
                         <div className="list-group">
                             {projectData.pages.map(doc => 
-                                <Link to={`${projectData.id}/${doc.id}`} key={`doc-${doc.id}`} className="list-group-item list-group-item-action">{doc.title}</Link>
+                                <Link to={`${projectData.id}/${doc.key}`} key={`doc-${doc.key}`} className="list-group-item list-group-item-action">{doc.title}</Link>
                             )}
                         </div>
                     </CardBox>

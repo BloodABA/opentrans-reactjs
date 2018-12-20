@@ -17,6 +17,14 @@ const APIUrl = {
     project : {
         method : "get",
         url: baseUrl + "/project/"
+    },
+    projectDetail : {
+        method : "get",
+        url: baseUrl + "/project/:projectUrl"
+    },
+    docsList : {
+        method : "get",
+        url: baseUrl + "/project/:projectUrl/list"
     }
 }
 
