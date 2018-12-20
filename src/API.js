@@ -14,6 +14,10 @@ const APIUrl = {
         method : "post",
         url: baseUrl + "/account/login"
     },
+    project : {
+        method : "get",
+        url: baseUrl + "/project/"
+    }
 }
 
 
