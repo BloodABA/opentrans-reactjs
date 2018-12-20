@@ -61,11 +61,11 @@ class Header extends Component {
                 <div className="ml-1">
                     {this.props.isLoggedIn ?
                         <React.Fragment>
-                            <button className="btn btn-sm btn-outline-secondary" onClick={() => { API.request('logout'); window.location.href='/'; }}>로그아웃</button>
+                            <button className={`btn btn-sm ${this.state.menuFixed ? 'btn-light' : 'btn-outline-dark'}`} onClick={() => { API.request('logout'); window.location.href='/'; }}>로그아웃</button>
                         </React.Fragment>
                         :
                         <Link to="/login">
-                            <button className="btn btn-sm btn-outline-secondary">로그인</button>
+                            <button className={`btn btn-sm ${this.state.menuFixed ? 'btn-light' : 'btn-outline-dark'}`}>로그인</button>
                         </Link>
                     }
                 </div>
