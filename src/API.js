@@ -28,6 +28,10 @@ const APIUrl = {
         method : "get",
         url: baseUrl + "/project/:projectUrl/list"
     },
+    docsListMD : {
+        method : "get",
+        url: baseUrl + "/project/:projectUrl/list/md"
+    },
     docsRead : {
         method : "get",
         url: baseUrl + "/project/:projectUrl/:fileHash"
