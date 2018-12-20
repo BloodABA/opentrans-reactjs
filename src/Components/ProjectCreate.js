@@ -4,6 +4,8 @@ import InnerContainer from './InnerContainer';
 import CardBox from './CardBox';
 import DatePicker from "react-datepicker";
 
+import API from '../API'
+
 import "react-datepicker/dist/react-datepicker.css";
 
 class ProjectCreate extends Component {
@@ -33,8 +35,24 @@ class ProjectCreate extends Component {
     handleDateChange(date) {
         this.setState({endDate: date});
     }
-    projectSubmit() {
-        console.log(">>>> submit");
+    projectSubmit = async () => {
+        const data = {
+            "project" : this.state.name,
+            "projectUrl" : this.state.id,
+            "description" : this.state.desc,
+            "bounty" : this.state.bounty,
+            "src" : "eng",
+            "dest" : "kor",
+            "visibility" : true,
+            "openTimestamp" : Date.now(),
+            "closeTimestamp" : this.state.endDate.getTime(),
+            "isOpensource" : this.state.isOss
+        }
+        const res = await API.request('projectCreate', {}, data);
+        if(!res) {
+            return;
+        }
+        window.location.href = "/project/" + this.state.id;
     }
     
     componentDidMount() {

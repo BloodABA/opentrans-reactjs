@@ -1,9 +1,11 @@
+const domain = "http://localhost"
+
 const Axios = require('axios').create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: domain + ':3000/',
     withCredentials: true
 })
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = domain + ":8080";
 
 const APIUrl = {
     session : {
@@ -24,11 +26,15 @@ const APIUrl = {
     },
     docsList : {
         method : "get",
-        url: baseUrl + "/project/:projectUrl/list/md"
+        url: baseUrl + "/project/:projectUrl/list"
     },
     docsRead : {
         method : "get",
         url: baseUrl + "/project/:projectUrl/:fileHash"
+    },
+    projectCreate : {
+        method : "post",
+        url: baseUrl + "/project/create"
     }
 }
 
