@@ -48,11 +48,15 @@ class ProjectCreate extends Component {
         this.setState({endDate: date});
     }
     projectSubmit = async () => {
+        let bounty = this.state.bounty
+        if(this.state.isOss) {
+            bounty = 1000000;
+        }
         const data = {
             "project" : this.state.name,
             "projectUrl" : this.state.id,
             "description" : this.state.desc,
-            "bounty" : this.state.bounty,
+            "bounty" : bounty,
             "src" : "eng",
             "dest" : "kor",
             "visibility" : true,
@@ -60,10 +64,16 @@ class ProjectCreate extends Component {
             "closeTimestamp" : this.state.endDate.getTime(),
             "isOpensource" : this.state.isOss
         }
-        const res = await API.request('projectCreate', {}, data);
+        let res = await API.request('projectCreate', {}, data);
         if(!res) {
             return;
         }
+        res = await API.request('docsApply', {
+                        projectUrl: this.state.id
+                    }, {
+                        gitUrl : this.state.giturl
+                    })
+
         window.location.href = "/project/" + this.state.id;
     }
     

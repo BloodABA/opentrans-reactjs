@@ -35,6 +35,10 @@ const APIUrl = {
     projectCreate : {
         method : "post",
         url: baseUrl + "/project/create"
+    },
+    docsApply : {
+        method : "post",
+        url: baseUrl + "/project/:projectUrl/docsApply"
     }
 }
 
