@@ -52,7 +52,7 @@ class PageEdit extends Component {
         if(!res) return;
         this.setState({
             selectedRow: row.key,
-            // prevText : res.data
+            prevText : res.data
         });
     }
 
@@ -136,11 +136,11 @@ class PageEdit extends Component {
                                             {this.state.prevText.map((row, index) => (
                                                 <div className="prevTextRow" key={`prevTextRow-${index}`}>
                                                     <div className="text">
-                                                        {row.text}
+                                                        {row.trans}
                                                     </div>
                                                     <span className="percent mr-2">
                                                         <span className="badge badge-info">
-                                                            {Math.floor(row.like / (row.like+row.dislike) * 100)+'% '}
+                                                            { (row.like+row.dislike) ? Math.floor(row.like / (row.like+row.dislike) * 100)+'% ' : '0%'}
                                                         </span>
                                                     </span>
                                                     <button className="like btn btn-sm btn-primary mr-2">
@@ -151,9 +151,15 @@ class PageEdit extends Component {
                                                         별로에요{' '}
                                                         <span className="badge badge-light">{row.dislike}</span>
                                                     </button>
-                                                    <button className="btn btn-sm btn-outline-success">
-                                                        채택
-                                                    </button>
+                                                    {
+                                                        (this.props.isOwner) ? (
+                                                            <button className="btn btn-sm btn-outline-success">
+                                                                채택
+                                                            </button>
+                                                        ) : (
+                                                            <React.Fragment></React.Fragment>
+                                                        )
+                                                    }
                                                 </div>
                                             ))}
                                         </div>
