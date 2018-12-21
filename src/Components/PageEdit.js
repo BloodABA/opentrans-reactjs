@@ -83,6 +83,15 @@ class PageEdit extends Component {
         window.location.reload();
     }
 
+    async vote(type, key) {
+        const projectUrl = window.location.pathname.split("/project/")[1].split("/")[0]
+        await API.request('vote', {projectUrl: projectUrl}, {
+            "transLogKey": key,
+            "type": type
+        })
+        window.location.reload();
+    }
+
     render() {
         const helloWorld = "Hello World!";
         let pageData = {
@@ -143,11 +152,11 @@ class PageEdit extends Component {
                                                             { (row.like+row.dislike) ? Math.floor(row.like / (row.like+row.dislike) * 100)+'% ' : '0%'}
                                                         </span>
                                                     </span>
-                                                    <button className="like btn btn-sm btn-primary mr-2">
+                                                    <button className="like btn btn-sm btn-primary mr-2" onClick={() => { this.vote(true, row._id) }}>
                                                         좋아요{' '}
                                                         <span className="badge badge-light">{row.like}</span>
                                                     </button>
-                                                    <button className="dislike btn btn-sm btn-warning mr-2">
+                                                    <button className="dislike btn btn-sm btn-warning mr-2" onClick={() => { this.vote(false, row._id) }}>
                                                         별로에요{' '}
                                                         <span className="badge badge-light">{row.dislike}</span>
                                                     </button>

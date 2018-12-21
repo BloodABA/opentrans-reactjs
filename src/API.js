@@ -59,6 +59,10 @@ const APIUrl = {
     update : {
         method : "post",
         url: baseUrl + "/project/:projectUrl/docsUpdate"
+    },
+    vote : {
+        method : "post",
+        url: baseUrl + "/translate/:projectUrl/vote"
     }
 }
 
