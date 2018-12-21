@@ -83,13 +83,21 @@ class PageEdit extends Component {
         window.location.reload();
     }
 
-    async vote(type, key) {
+    async vote(type, key, index) {
         const projectUrl = window.location.pathname.split("/project/")[1].split("/")[0]
         await API.request('vote', {projectUrl: projectUrl}, {
             "transLogKey": key,
             "type": type
         })
-        window.location.reload();
+        let temp = this.state.prevText;
+        if (type) {
+            temp[index].like++;
+        } else {
+            temp[index].dislike++;
+        }
+        this.setState({prevText: temp});
+        //window.location.reload();
+
     }
 
     render() {
@@ -152,11 +160,11 @@ class PageEdit extends Component {
                                                             { (row.like+row.dislike) ? Math.floor(row.like / (row.like+row.dislike) * 100)+'% ' : '0%'}
                                                         </span>
                                                     </span>
-                                                    <button className="like btn btn-sm btn-primary mr-2" onClick={() => { this.vote(true, row._id) }}>
+                                                    <button className="like btn btn-sm btn-primary mr-2" onClick={() => { this.vote(true, row._id, index) }}>
                                                         좋아요{' '}
                                                         <span className="badge badge-light">{row.like}</span>
                                                     </button>
-                                                    <button className="dislike btn btn-sm btn-warning mr-2" onClick={() => { this.vote(false, row._id) }}>
+                                                    <button className="dislike btn btn-sm btn-warning mr-2" onClick={() => { this.vote(false, row._id, index) }}>
                                                         별로에요{' '}
                                                         <span className="badge badge-light">{row.dislike}</span>
                                                     </button>
